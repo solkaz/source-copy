@@ -1,5 +1,8 @@
 module.export = {
-  extends: ['eslint:recommended'],
+	extends: ['eslint:recommended'],
+	parserOptions: {
+		emcaVersion: 6
+	},
   env: {
 	  browser: true,
 	  es6: true,
