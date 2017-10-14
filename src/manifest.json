@@ -1,0 +1,20 @@
+{
+		"author": "Jeff Held",
+		"description": "Copy-and-Paste Driven Development made easier!",
+		"homepage_url": "https://github.com/solkaz/source-copy",
+		"manifest_version": 2,
+		"version": "0.0.0",
+		"name": "Source Copy",
+		"content_scripts": [
+        {
+            "matches": ["*://*.github.com/*"],
+            "js": ["content_scripts/main.js"]
+        }
+    ],
+		"permissions": [
+				"webNavigation",
+        "tabs",
+        "*://*.github.com/*",
+        "clipboardWrite"
+		]
+}
