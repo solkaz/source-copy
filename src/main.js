@@ -6,8 +6,6 @@ const CODE_BLOCK_SELECTOR = 'div.highlight';
 // Get all code blocks
 const codeBlocks = document.querySelectorAll(CODE_BLOCK_SELECTOR);
 
-const copyButtons = [];
-
 // Process each code block to add a copy button
 codeBlocks.forEach(codeBlock => {
   // Element that contains the code snippet we want to copy
@@ -30,11 +28,7 @@ codeBlocks.forEach(codeBlock => {
 
   // Insert the copy button before the code snippet element
   codeBlock.insertBefore(copyButton, codeSnippetEl);
-
-  // Append the copy button to the list of copyButtons
-  copyButtons.push(copyButton);
 });
 
-// Instanstiate clipboard
-const clip = new Clipboard(copyButtons);
-console.log('clip', clip);
+// Instanstiate Clipboard.js instance
+const clip = new Clipboard('button[data-clipboard-text]');
