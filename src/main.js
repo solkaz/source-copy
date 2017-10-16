@@ -8,9 +8,17 @@ const codeBlocks = document.querySelectorAll(CODE_BLOCK_SELECTOR);
 
 // Process each code block to add a copy button
 codeBlocks.forEach(codeBlock => {
+  const firstChild = codeBlock.firstChild;
+  // There is already a copy button, so don't create another button
+  // For now just return
+  if (firstChild.tagName === 'BUTTON' && firstChild.dataset.clipboardText) {
+    console.log('not creating button');
+    return;
+  }
+
   // Element that contains the code snippet we want to copy
   // AFAIK, this is always the first (and only) child of the code block
-  const codeSnippetEl = codeBlock.firstChild;
+  const codeSnippetEl = firstChild;
 
   // Extract the code snippet
   const codeSnippet = codeSnippetEl.innerText;
