@@ -32,3 +32,17 @@ codeBlocks.forEach(codeBlock => {
 
 // Instanstiate Clipboard.js instance
 const clip = new Clipboard('button[data-clipboard-text]');
+
+clip.on('success', function(e) {
+  e.trigger.innerText = 'Copied!';
+  setTimeout(() => {
+    e.trigger.innerText = 'Copy';
+  }, 3000);
+});
+
+clip.on('error', function(e) {
+  e.trigger.innerText = 'Failed :(';
+  setTimeout(() => {
+    e.trigger.innerText = 'Copy';
+  }, 3000);
+});
