@@ -7,12 +7,12 @@
 		"name": "Source Copy",
 		"content_scripts": [
         {
-            "matches": ["*://*.github.com/*"],
+            "matches": ["*://*/*"],
             "js": ["dist/main.js"]
         }
     ],
 		"permissions": [
-        "*://*.github.com/*",
+        "*://*/*",
         "clipboardWrite"
 		]
 }

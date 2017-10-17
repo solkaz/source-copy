@@ -35,7 +35,6 @@ patterns.forEach(({ pattern, codeBlockSelector = 'pre' }) => {
     // There is already a copy button, so don't create another button
     // For now just return
     if (firstChild.tagName === 'BUTTON' && firstChild.dataset.clipboardText) {
-      console.log('not creating button');
       return;
     }
 
