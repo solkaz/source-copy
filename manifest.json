@@ -12,8 +12,6 @@
         }
     ],
 		"permissions": [
-				"webNavigation",
-        "tabs",
         "*://*.github.com/*",
         "clipboardWrite"
 		]
