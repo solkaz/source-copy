@@ -7,6 +7,50 @@ const ROLLUP_PLUGINS = [resolve(), commonjs()];
 
 gulp.task('default', () => {});
 
+gulp.task('watch:background', async () => {
+  const input = './src/background/main.js';
+  const watcher = rollup.watch({
+    input,
+    plugins: ROLLUP_PLUGINS,
+    output: [
+      {
+        file: './dist/background/main.js',
+        format: 'iife',
+      },
+    ],
+    watch: {
+      include: input,
+    },
+  });
+
+  watcher.on('event', ({ code }) => {
+    console.log('background:', code);
+  });
+});
+
+gulp.task('watch:content_scripts', async () => {
+  const input = './src/content_scripts/main.js';
+  const watcher = rollup.watch({
+    input,
+    plugins: ROLLUP_PLUGINS,
+    output: [
+      {
+        file: './dist/content_scripts/main.js',
+        format: 'iife',
+      },
+    ],
+    watch: {
+      include: input,
+    },
+  });
+
+  watcher.on('event', ({ code }) => {
+    console.log('content_script:', code);
+  });
+});
+
+gulp.task('watch', ['watch:background', 'watch:content_scripts']);
+
 gulp.task('build:background', async () => {
   console.log('building background');
   const bundle = await rollup.rollup({
