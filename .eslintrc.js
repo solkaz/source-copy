@@ -1,11 +1,28 @@
-module.export = {
-	extends: ['eslint:recommended'],
-	parserOptions: {
-		emcaVersion: 6
-	},
-  env: {
-	  browser: true,
-	  es6: true,
-    webextensions: true,
-  },
+module.exports = {
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
+    }
 };
