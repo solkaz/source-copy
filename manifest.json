@@ -11,8 +11,12 @@
             "js": ["dist/content_scripts/main.js"]
         }
     ],
+    "background": {
+        "scripts": ["dist/background/main.js"]
+    },
 		"permissions": [
         "*://*/*",
-        "clipboardWrite"
+        "clipboardWrite",
+        "webNavigation"
 		]
 }
