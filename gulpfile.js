@@ -23,8 +23,10 @@ gulp.task('watch:background', async () => {
     },
   });
 
-  watcher.on('event', ({ code }) => {
-    console.log('background:', code);
+	watcher.on('event', ({ code }) => {
+		if (code === 'END') {
+			console.log('background bundled');
+		}
   });
 });
 
@@ -45,7 +47,9 @@ gulp.task('watch:content_scripts', async () => {
   });
 
   watcher.on('event', ({ code }) => {
-    console.log('content_script:', code);
+    if (code === 'END') {
+			console.log('content_script bundled');
+		}
   });
 });
 
@@ -69,7 +73,7 @@ gulp.task('build:content_scripts', async () => {
   const bundle = await rollup.rollup({
     input: './src/content_scripts/main.js',
     plugins: ROLLUP_PLUGINS,
-  });
+  })
 
   await bundle.write({
     file: './dist/content_scripts/main.js',
