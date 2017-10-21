@@ -1,31 +1,6 @@
 import Clipboard from 'clipboard';
-import escapeRegexp from 'lodash-es/escapeRegexp';
 
-const httpRegexp = /.*:\/\//;
-const wwwRegexp = /(.*\.)?/;
-const tailRegexp = /.*/;
-
-const makeWebsiteRegexp = url => {
-  return new RegExp(
-    httpRegexp.source + wwwRegexp.source + escapeRegexp(url) + tailRegexp.source
-  );
-};
-
-// CSS selector to match a code block on a page
-const patterns = [
-  {
-    pattern: makeWebsiteRegexp('github.com'),
-    codeBlockSelector: 'div.highlight',
-  },
-  {
-    pattern: makeWebsiteRegexp('stackoverflow.com'),
-  },
-];
-
-patterns.forEach(({ pattern, codeBlockSelector = 'pre' }) => {
-  if (!pattern.test(document.URL)) {
-    return;
-  }
+const addCopyButtons = codeBlockSelector => {
   // Get all code blocks
   const codeBlocks = document.querySelectorAll(codeBlockSelector);
 
@@ -76,4 +51,16 @@ patterns.forEach(({ pattern, codeBlockSelector = 'pre' }) => {
       e.trigger.innerText = 'Copy';
     }, 3000);
   });
+};
+
+browser.runtime.onMessage.addListener(message => {
+  switch (message.type) {
+    case 'add-buttons': {
+      addCopyButtons(message.codeBlockSelector);
+      break;
+    }
+    default: {
+      break;
+    }
+  }
 });

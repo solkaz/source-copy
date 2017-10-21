@@ -27,10 +27,16 @@ const patterns = [
   },
 ];
 
-const onCompleted = (details) => {
-	if (patterns.some((pattern) => details.url.includes(pattern))) {
-		console.log('matched:', details.url);
-	}
+const onCompleted = details => {
+  for (const { pattern, codeBlockSelector = 'pre' } of patterns) {
+    if (pattern.test(details.url)) {
+      browser.tabs.sendMessage(details.tabId, {
+        type: 'add-buttons',
+        codeBlockSelector,
+      });
+      break;
+    }
+  }
 };
 
 browser.webNavigation.onCompleted.addListener(onCompleted);
