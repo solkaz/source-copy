@@ -9,14 +9,21 @@ const makeWebsiteRegexp = url => {
     httpRegexp.source + wwwRegexp.source + escapeRegexp(url) + tailRegexp.source
   );
 };
-
 const patterns = [
   {
     pattern: makeWebsiteRegexp('github.com'),
-    codeBlockSelector: 'div.highlight',
   },
   {
     pattern: makeWebsiteRegexp('stackoverflow.com'),
+  },
+  {
+    pattern: makeWebsiteRegexp('npmjs.org'),
+  },
+  {
+    pattern: makeWebsiteRegexp('medium.com'),
+  },
+  {
+    pattern: makeWebsiteRegexp('readthedocs.io'),
   },
 ];
 
