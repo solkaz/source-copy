@@ -7,6 +7,37 @@ const ROLLUP_PLUGINS = [resolve(), commonjs()];
 
 gulp.task('default', () => {});
 
+gulp.task('build:options:html', async () => {
+	gulp.src(['./src/options_ui/index.html'])
+		.pipe(gulp.dest('./dist/options_ui'))
+})
+
+gulp.task('watch:options:js', async () => {
+  const input = './src/options_ui/index.js';
+  const watcher = rollup.watch({
+    input,
+    plugins: ROLLUP_PLUGINS,
+    output: [
+      {
+        file: './dist/options_ui/index.js',
+        format: 'iife',
+      },
+    ],
+    watch: {
+      include: input,
+    },
+  });
+  watcher.on('event', ({ code }) => {
+    if (code === 'END') {
+			console.log('options_ui bundled');
+    } else if (code === 'FATAL') {
+	    console.log('error bundling code; exiting');
+    }
+  });
+})
+
+gulp.task('watch:options', ['watch:options:js']);
+
 gulp.task('watch:background', async () => {
   const input = './src/background/main.js';
   const watcher = rollup.watch({

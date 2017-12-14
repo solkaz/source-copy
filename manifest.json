@@ -1,22 +1,26 @@
 {
-		"author": "Jeff Held",
-		"description": "Copy-and-Paste Driven Development made easier!",
-		"homepage_url": "https://github.com/solkaz/source-copy",
-		"manifest_version": 2,
-		"version": "0.0.0",
-		"name": "Source Copy",
-		"content_scripts": [
-        {
-            "matches": ["*://*/*"],
-            "js": ["dist/content_scripts/main.js"]
-        }
-    ],
-    "background": {
-        "scripts": ["dist/background/main.js"]
-    },
-		"permissions": [
-        "*://*/*",
-        "clipboardWrite",
-        "webNavigation"
-		]
+	"author": "Jeff Held",
+	"description": "Copy-and-Paste Driven Development made easier!",
+	"homepage_url": "https://github.com/solkaz/source-copy",
+	"manifest_version": 2,
+	"version": "0.0.0",
+	"name": "Source Copy",
+  "options_ui": {
+    "page": "dist/options_ui/index.html",
+    "open_in_tab": true
+  },
+	"content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["dist/content_scripts/main.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["dist/background/main.js"]
+  },
+	"permissions": [
+    "*://*/*",
+    "clipboardWrite",
+    "webNavigation"
+	]
 }
