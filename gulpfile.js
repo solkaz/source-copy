@@ -24,7 +24,7 @@ gulp.task('watch:options:js', async () => {
       },
     ],
     watch: {
-      include: input,
+      include: './src/options_ui/**',
     },
   });
   watcher.on('event', ({ code }) => {
