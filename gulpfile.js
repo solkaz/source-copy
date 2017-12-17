@@ -84,7 +84,7 @@ gulp.task('watch:content_scripts', async () => {
   });
 });
 
-gulp.task('watch', ['watch:background', 'watch:content_scripts']);
+gulp.task('watch', ['watch:background', 'watch:content_scripts', 'watch:options']);
 
 gulp.task('build:background', async () => {
   console.log('building background');
