@@ -7,7 +7,8 @@
 	"name": "Source Copy",
   "options_ui": {
     "page": "dist/options_ui/index.html",
-    "open_in_tab": true
+    "open_in_tab": true,
+    "browser_style": true
   },
 	"content_scripts": [
     {
