@@ -1,7 +1,9 @@
 import m from 'mithril';
 
+import { OptionsDisplayTable } from './options-display-table';
+
 console.log('creating options page');
 
-const root = document.body;
+m.mount(document.body, OptionsDisplayTable);
 
-m.render(root, 'Hello World')
+
