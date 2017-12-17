@@ -1,9 +1,7 @@
 import m from 'mithril';
 
-import { OptionsDisplayTable } from './options-display-table';
+import { OptionsPage } from './options-page';
 
-console.log('creating options page');
-
-m.mount(document.body, OptionsDisplayTable);
+m.mount(document.body, OptionsPage);
 
 

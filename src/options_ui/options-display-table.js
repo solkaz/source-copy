@@ -24,7 +24,7 @@ export class OptionsDisplayTableBody {
     return m(
       'tbody',
       this.options.map(option => {
-	      return m(OptionsDisplayTableRow, { option, key: option.name });
+        return m(OptionsDisplayTableRow, { option, key: option.name });
       })
     );
   }
@@ -32,15 +32,15 @@ export class OptionsDisplayTableBody {
 
 export class OptionsDisplayTableRow {
   constructor(vnode) {
-	  this.option = vnode.attrs.option;
+    this.option = vnode.attrs.option;
   }
 
   view() {
-	  const { name, pattern, enabled, selector } = this.option;
+    const { name, pattern, enabled, selector } = this.option;
 
     return m('tr', [
       m('td', name),
-	    m('td', m('pre', pattern.toString())),
+      m('td', m('pre', pattern.toString())),
       m('td', enabled),
       m('td', selector),
     ]);
@@ -48,11 +48,11 @@ export class OptionsDisplayTableRow {
 }
 
 export class OptionsDisplayTable {
-  constructor(vnode) {
+  constructor() {
     this.options = fetchUserOptions();
   }
 
-  view(vnode) {
+  view() {
     const { options } = this;
     return m('table.table.table-bordered', [
       m(OptionsDisplayTableHeader),
