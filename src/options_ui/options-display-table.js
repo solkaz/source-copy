@@ -54,7 +54,7 @@ export class OptionsDisplayTable {
 
   view(vnode) {
     const { options } = this;
-    return m('table', [
+    return m('table.table.table-bordered', [
       m(OptionsDisplayTableHeader),
       m(OptionsDisplayTableBody, { options }),
     ]);
