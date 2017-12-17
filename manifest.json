@@ -22,6 +22,7 @@
 	"permissions": [
     "*://*/*",
     "clipboardWrite",
-    "webNavigation"
+    "webNavigation",
+    "storage"
 	]
 }
