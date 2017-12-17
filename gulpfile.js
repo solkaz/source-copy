@@ -8,7 +8,7 @@ const ROLLUP_PLUGINS = [resolve(), commonjs()];
 gulp.task('default', () => {});
 
 gulp.task('build:options:html', async () => {
-	gulp.src(['./src/options_ui/index.html'])
+	gulp.src(['./src/options_ui/index.html', './node_modules/bootstrap/dist/css/bootstrap.min.css'])
 		.pipe(gulp.dest('./dist/options_ui'))
 })
 
