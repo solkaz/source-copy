@@ -36,7 +36,7 @@ gulp.task('watch:options:js', async () => {
   });
 })
 
-gulp.task('watch:options', ['watch:options:js']);
+gulp.task('watch:options', ['build:options:html', 'watch:options:js']);
 
 gulp.task('watch:background', async () => {
   const input = './src/background/main.js';
