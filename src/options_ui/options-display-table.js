@@ -9,7 +9,7 @@ export const OptionsDisplayTableHeader = () => ({
         m('th', 'Name'),
         m('th', 'Pattern'),
         m('th', 'Enabled'),
-        m('th', 'Selector (Optional)'),
+        m('th', 'Selector'),
       ]),
     ]);
   },
