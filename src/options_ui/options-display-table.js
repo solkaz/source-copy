@@ -1,7 +1,5 @@
 import m from 'mithril';
 
-import { fetchUserOptions } from './util';
-
 export const OptionsDisplayTableHeader = () => ({
   view() {
     return m('thead', [
@@ -48,12 +46,8 @@ export class OptionsDisplayTableRow {
 }
 
 export class OptionsDisplayTable {
-  constructor() {
-    this.options = fetchUserOptions();
-  }
-
-  view() {
-    const { options } = this;
+  view(vnode) {
+    const { options } = vnode.attrs;
     return m('table.table.table-bordered', [
       m(OptionsDisplayTableHeader),
       m(OptionsDisplayTableBody, { options }),
