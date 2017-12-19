@@ -17,48 +17,63 @@ export class NewOptionForm {
   view(vnode) {
     const { name, pattern, selector, enabled } = vnode.state.newOption;
 
-    return m('form', [
-      m('div.row.p-3', [
-        Col(
-          m('input.form-control', {
-            type: 'text',
-            placeholder: 'Name',
-            value: name,
-          })
-        ),
-        Col(
-          m('input.form-control', {
-            type: 'text',
-            placeholder: 'Pattern',
-            value: pattern,
-          })
-        ),
-        Col(
-          m('input.form-control', {
-            type: 'text',
-            placeholder: 'Selector (Optional)',
-            value: selector,
-          })
-        ),
-        Col(
-          m('div.form-check.form-check-inline', [
-            m('label.form-check-label', [
-              m('input.form-check-input', {
-                type: 'checkbox',
-                checked: enabled,
+    return m(
+      'form',
+      {
+        onsubmit: event => event.preventDefault(),
+      },
+      [
+        m('div.row.p-3', [
+          Col(
+            m('input.form-control', {
+              type: 'text',
+              placeholder: 'Name',
+              value: name,
+              oninput: m.withAttr('value', name => {
+                vnode.state.newOption.name = name;
               }),
-              'Enabled',
-            ]),
-          ])
-        ),
-        Col(
-          m(
-            'button.btn.btn-primary',
-            { type: 'button', disabled: !validateForm(vnode.state.newOption) },
-            '+'
-          )
-        ),
-      ]),
-    ]);
+            })
+          ),
+          Col(
+            m('input.form-control', {
+              type: 'text',
+              placeholder: 'Pattern',
+              value: pattern,
+              oninput: m.withAttr('value', pattern => {
+                vnode.state.newOption.pattern = pattern;
+              }),
+            })
+          ),
+          Col(
+            m('input.form-control', {
+              type: 'text',
+              placeholder: 'Selector (Optional)',
+              value: selector,
+              oninput: m.withAttr('value', pattern => {
+                vnode.state.newOption.selector = selector;
+              }),
+            })
+          ),
+          Col(
+            m('div.form-check.form-check-inline', [
+              m('label.form-check-label', [
+                m('input.form-check-input', {
+                  type: 'checkbox',
+                  checked: enabled,
+                }),
+                'Enabled',
+              ]),
+            ])
+          ),
+          Col(
+            m(
+              'button.btn.btn-primary',
+              { disabled: !validateForm(vnode.state.newOption) },
+              '+'
+            )
+          ),
+        ]),
+      ]
+    );
   }
 }
