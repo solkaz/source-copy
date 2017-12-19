@@ -6,7 +6,7 @@ import { OptionsMenu } from './options-menu';
 
 export class OptionsPage {
 	view() {
-		return m('div', [
+		return m('div.p-3', [
 			m(OptionsMenu),
 			m(NewOptionForm),
 			m(OptionsDisplayTable)
