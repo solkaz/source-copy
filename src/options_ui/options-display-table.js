@@ -6,8 +6,8 @@ export const OptionsDisplayTableHeader = () => ({
       m('tr', [
         m('th', 'Name'),
         m('th', 'Pattern'),
-        m('th', 'Enabled'),
         m('th', 'Selector'),
+        m('th', 'Enabled'),
       ]),
     ]);
   },
@@ -39,8 +39,8 @@ export class OptionsDisplayTableRow {
     return m('tr', [
       m('td', name),
       m('td', m('pre', pattern.toString())),
-      m('td', enabled),
       m('td', selector),
+      m('td', enabled),
     ]);
   }
 }
