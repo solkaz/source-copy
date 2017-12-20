@@ -14,33 +14,44 @@ export const OptionsDisplayTableHeader = () => ({
 });
 
 export class OptionsDisplayTableBody {
-  constructor(vnode) {
-    this.options = vnode.attrs.options;
-  }
-
-  view() {
+  view(vnode) {
     return m(
       'tbody',
-      this.options.map(option => {
-        return m(OptionsDisplayTableRow, { option, key: option.name });
+      vnode.attrs.options.map(option => {
+        return m(OptionsDisplayTableRow, {
+          option,
+          key: option.name,
+          onEnabledChange: () => {
+            option.enabled = !option.enabled;
+          },
+        });
       })
     );
   }
 }
 
 export class OptionsDisplayTableRow {
-  constructor(vnode) {
-    this.option = vnode.attrs.option;
-  }
-
-  view() {
-    const { name, pattern, enabled, selector } = this.option;
+  view(vnode) {
+    const {
+      option: { name, pattern, enabled, selector },
+      onEnabledChange,
+    } = vnode.attrs;
 
     return m('tr', [
       m('td', name),
       m('td', m('pre', pattern.toString())),
       m('td', selector),
-      m('td', enabled),
+      m(
+        'td',
+        m('label.form-check-label', [
+          m('input.form-check-input', {
+            type: 'checkbox',
+            checked: enabled,
+            onchange: onEnabledChange,
+          }),
+          'Enabled',
+        ])
+      ),
     ]);
   }
 }
