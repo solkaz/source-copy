@@ -5,31 +5,31 @@ export const validateForm = ({ name, pattern }) => Boolean(name && pattern);
 export const Col = el => m('div.col', [el]);
 
 class Option {
-	constructor() {
-		this.name = '';
-		this.pattern = '';
-		this.selector = '';
-		this.enabled = true;
-	}
+  constructor() {
+    this.name = '';
+    this.pattern = '';
+    this.selector = '';
+    this.enabled = true;
+  }
 }
 
 export class NewOptionForm {
   oninit(vnode) {
-	  vnode.state.newOption = new Option();
+    vnode.state.newOption = new Option();
   }
 
-	view(vnode) {
-		const { addOption } = vnode.attrs;
+  view(vnode) {
+    const { addOption } = vnode.attrs;
     const { name, pattern, selector, enabled } = vnode.state.newOption;
 
     return m(
       'form',
       {
-	      onsubmit: event => {
-		      event.preventDefault();
-		      addOption(vnode.state.newOption);
-		      vnode.state.newOption = new Option();
-	      },
+        onsubmit: event => {
+          event.preventDefault();
+          addOption(vnode.state.newOption);
+          vnode.state.newOption = new Option();
+        },
       },
       [
         m('div.row.p-3', [
@@ -68,8 +68,10 @@ export class NewOptionForm {
               m('label.form-check-label', [
                 m('input.form-check-input', {
                   type: 'checkbox',
-	                checked: enabled,
-	                onchange: () => { vnode.state.newOption.enabled = !enabled; }
+                  checked: enabled,
+                  onchange: () => {
+                    vnode.state.newOption.enabled = !enabled;
+                  },
                 }),
                 'Enabled',
               ]),
