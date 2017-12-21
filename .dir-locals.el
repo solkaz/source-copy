@@ -3,5 +3,5 @@
 
 ((js2-mode
   (prettier-js-args "--trailing-comma=es5" "--single-quote")
-  (prettier-js-mode)))
+  (prettier-js-mode +1)))
 
