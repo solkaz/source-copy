@@ -57,7 +57,7 @@ export class OptionsDisplayTableRow {
       ),
       m('td', [
         m(
-          'button.btn.btn-primary',
+          'button.btn.btn-danger',
           { type: 'button', onclick: onDelete },
           'Delete'
         ),
