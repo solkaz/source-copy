@@ -47,12 +47,11 @@ export class OptionsDisplayTableRow {
       m(
         'td',
         m('label.form-check-label', [
-          m('input.form-check-input', {
+          m('input.form-check-input.position-static', {
             type: 'checkbox',
             checked: enabled,
             onchange: onEnabledChange,
           }),
-          'Enabled',
         ])
       ),
       m('td', [
