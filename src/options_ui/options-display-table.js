@@ -15,15 +15,17 @@ export const OptionsDisplayTableHeader = () => ({
 
 export class OptionsDisplayTableBody {
   view(vnode) {
+    const { deleteOption, options } = vnode.attrs;
     return m(
       'tbody',
-      vnode.attrs.options.map(option => {
+      options.map((option, index) => {
         return m(OptionsDisplayTableRow, {
           option,
           key: option.name,
           onEnabledChange: () => {
             option.enabled = !option.enabled;
           },
+          onDelete: () => deleteOption(index),
         });
       })
     );
@@ -35,6 +37,7 @@ export class OptionsDisplayTableRow {
     const {
       option: { name, pattern, enabled, selector },
       onEnabledChange,
+      onDelete,
     } = vnode.attrs;
 
     return m('tr', [
@@ -52,16 +55,23 @@ export class OptionsDisplayTableRow {
           'Enabled',
         ])
       ),
+      m('td', [
+        m(
+          'button.btn.btn-primary',
+          { type: 'button', onclick: onDelete },
+          'Delete'
+        ),
+      ]),
     ]);
   }
 }
 
 export class OptionsDisplayTable {
   view(vnode) {
-    const { options } = vnode.attrs;
+    const { deleteOption, options } = vnode.attrs;
     return m('table.table.table-bordered', [
       m(OptionsDisplayTableHeader),
-      m(OptionsDisplayTableBody, { options }),
+      m(OptionsDisplayTableBody, { deleteOption, options }),
     ]);
   }
 }
